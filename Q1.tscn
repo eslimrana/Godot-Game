@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqf088kis2ji5"]
+
+[ext_resource type="FontFile" uid="uid://cnbvxslvvtmto" path="res://fonts/Redkost Comic.otf" id="1_3cbjm"]
+[ext_resource type="Script" path="res://assets/true-button.gd" id="2_41bhi"]
+[ext_resource type="Script" path="res://assets/false-button.gd" id="3_r4057"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ms6e"]
+font = ExtResource("1_3cbjm")
+font_size = 150
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 718.0
+color = Color(0.407843, 0.32549, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 373.0
+text = "Question1"
+label_settings = SubResource("LabelSettings_0ms6e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="true-button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 386.0
+offset_right = 639.0
+offset_bottom = 551.0
+theme_override_fonts/font = ExtResource("1_3cbjm")
+theme_override_font_sizes/font_size = 100
+text = "Correct"
+script = ExtResource("2_41bhi")
+
+[node name="false-button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 386.0
+offset_right = 1211.0
+offset_bottom = 551.0
+theme_override_fonts/font = ExtResource("1_3cbjm")
+theme_override_font_sizes/font_size = 150
+text = "FALSE"
+script = ExtResource("3_r4057")
+
+[connection signal="pressed" from="true-button" to="true-button" method="_on_pressed"]
+[connection signal="pressed" from="false-button" to="false-button" method="_on_pressed"]

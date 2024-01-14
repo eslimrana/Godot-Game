@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgygtdlh4slng"]
+
+[ext_resource type="PackedScene" uid="uid://b1y45e78uxry8" path="res://assets/eslim.tscn" id="1_jdwhm"]
+[ext_resource type="Script" path="res://scripts/eslim.gd" id="2_y8iqk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbqu5"]
+sky_top_color = Color(0.839216, 0.462745, 0.219608, 1)
+sky_horizon_color = Color(0.980392, 0.654902, 0.490196, 1)
+
+[sub_resource type="Sky" id="Sky_hw4m4"]
+sky_material = SubResource("ProceduralSkyMaterial_jbqu5")
+
+[sub_resource type="Environment" id="Environment_aalbh"]
+background_mode = 2
+sky = SubResource("Sky_hw4m4")
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bmx63"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1fga"]
+albedo_color = Color(0.4, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ha4a7"]
+material = SubResource("StandardMaterial3D_d1fga")
+size = Vector3(100, 1, 100)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aalbh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.835462, 0.549548, 0, -0.549548, 0.835462, 0.695688, 3.80567, 9.05525)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_bmx63")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_ha4a7")
+
+[node name="Eslim" parent="." instance=ExtResource("1_jdwhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20585, 0)
+script = ExtResource("2_y8iqk")

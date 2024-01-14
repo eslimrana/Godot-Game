@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm1we3oow074j"]
+
+[ext_resource type="FontFile" uid="uid://cnbvxslvvtmto" path="res://fonts/Redkost Comic.otf" id="1_njgqu"]
+[ext_resource type="Script" path="res://StartButton.gd" id="2_soikf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aq6ha"]
+font = ExtResource("1_njgqu")
+font_size = 120
+font_color = Color(1, 0.403922, 0.6, 1)
+shadow_color = Color(0.188235, 0.8, 0.690196, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 700.0
+color = Color(0.290196, 0.266667, 0.290196, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.974
+anchor_bottom = 0.983
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 41.28
+offset_bottom = -152.76
+text = "3D GAME
+"
+label_settings = SubResource("LabelSettings_aq6ha")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.055
+offset_left = 385.0
+offset_top = 464.0
+offset_right = 821.0
+offset_bottom = 574.4
+theme_override_fonts/font = ExtResource("1_njgqu")
+theme_override_font_sizes/font_size = 70
+text = "START"
+script = ExtResource("2_soikf")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_startpressed"]
